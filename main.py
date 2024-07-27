@@ -11,35 +11,33 @@ camaras = ["Camara1", "Camara2"]
 
 camara_sort = ["Camara1_sort", "Camara2_sort"]
 
-stacion_path = os.path.join(actual_path, 'CA-HU-09 Santa Maria')
+Estaciones = ['CA_HU_04 Paraiso', 'CA-HU-01 Nieveria', 'CA-HU-09 Santa Maria']
+
 
 
 
 if __name__ == "__main__":
 
-    # for index in range(0,2):
+    for estation in Estaciones:
 
-    #     image_paths = os.path.join(stacion_path, camaras[index])
+        stacion_path = os.path.join(actual_path, estation)
 
-    #     destini_photos = os.path.join(stacion_path, camara_sort[index])
-    
-    #     # sort_img(image_paths, destini_photos)
+        for index in range(0,2):
 
-    #     # reformart(destini_photos)
+            image_paths = os.path.join(stacion_path, camaras[index])
 
-    #     # delete_empty_folders(destini_photos)
+            destini_photos = os.path.join(stacion_path, camara_sort[index])
 
-    #     make_video(destini_photos)
-    
-    root = tk.Tk()
-    root.withdraw()  # Hide the main window
+            if os.path.isdir(image_paths):
+        
+                sort_img(image_paths, destini_photos)
 
-    # Get the list of available font families
-    available_fonts = tkFont.families()
+                reformart(destini_photos)
 
-    # Print the available fonts
-    print("Available fonts:")
-    for font in available_fonts:
-        print(font)
+                delete_empty_folders(destini_photos)
 
-    root.destroy()
+                make_video(destini_photos)
+
+            else:
+                
+                continue
